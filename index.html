@@ -6,15 +6,21 @@
     <title>Dopa | Catálogo Premium</title>
     <meta name="description" content="Catálogo de nuestros productos. Haz tu pedido directamente por WhatsApp.">
     
+    <!-- Etiquetas SEO (Open Graph) para vista previa al compartir -->
+    <meta property="og:title" content="Top Dopa | Catálogo Premium">
+    <meta property="og:description" content="Catálogo de nuestros productos. Haz tu pedido directamente por WhatsApp.">
+    <meta property="og:image" content="https://topdopa-demo.pages.dev/fotos/logo.png">
+    <meta property="og:type" content="website">
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
     <style>
         :root {
-            --color-principal: #ff7600; /* Naranja estilo Sarab */
+            --color-principal: #ff7600;
             --color-principal-hover: #e66a00;
-            --color-fondo: #f4f7f6; /* Gris muy claro y elegante */
+            --color-fondo: #f4f7f6;
             --color-texto: #1a1a1a;
             --color-texto-suave: #666666;
             --color-tarjeta: #ffffff;
@@ -24,34 +30,59 @@
         }
         
         * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { font-family: 'Poppins', sans-serif; background-color: var(--color-fondo); color: var(--color-texto); line-height: 1.6; }
+        body { font-family: 'Poppins', sans-serif; background-color: var(--color-fondo); color: var(--color-texto); line-height: 1.6; margin: 0; overflow-x: hidden; }
         h1, h2, h3 { font-family: 'Playfair Display', serif; }
         
-        /* Cabecera Premium */
-        header { 
-            text-align: center; 
-            background: linear-gradient(to bottom, #ffffff, #f4f7f6);
-            padding: 4rem 1rem; 
-            border-bottom: 1px solid rgba(0,0,0,0.03);
+        /* Contenedor principal */
+        .contenedor-principal {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 16px;
         }
-        .logo { width: 130px; height: 130px; border-radius: 50%; object-fit: cover; margin-bottom: 1.5rem; box-shadow: 0 10px 25px rgba(0,0,0,0.1); border: 4px solid white; }
-        header h1 { font-size: 3rem; font-weight: 700; color: var(--color-texto); margin-bottom: 0.5rem; letter-spacing: -1px; }
-        header h1 span { color: var(--color-principal); font-style: italic; }
-        header p { font-size: 1.2rem; margin-bottom: 2rem; color: var(--color-texto-suave); font-weight: 300; }
-        
-        .btn { display: inline-block; padding: 14px 32px; border-radius: 50px; text-decoration: none; font-weight: 600; text-align: center; border: none; cursor: pointer; transition: all 0.3s ease; }
-        .btn-principal { background-color: var(--color-principal); color: white; box-shadow: 0 8px 20px rgba(255, 118, 0, 0.3); font-size: 1.1rem; }
-        .btn-principal:hover { background-color: var(--color-principal-hover); transform: translateY(-3px); box-shadow: 0 12px 25px rgba(255, 118, 0, 0.4); }
-        
-        /* Filtros estilo Píldora */
-        .filtros { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; padding: 3rem 1rem 1rem; max-width: 1000px; margin: 0 auto; }
-        .btn-filtro { background: white; border: 1px solid #e0e0e0; color: var(--color-texto-suave); padding: 10px 24px; border-radius: 30px; font-family: 'Poppins', sans-serif; font-weight: 500; transition: all 0.3s; box-shadow: 0 4px 10px rgba(0,0,0,0.02); }
+
+        /* Cabecera */
+        .cabecera-catalogo {
+            margin-bottom: 16px;
+            text-align: center;
+            padding: 3rem 1rem 1rem;
+        }
+        .logo-container {
+            width: 90px; height: 90px; margin: 0 auto 10px auto;
+            position: relative;
+            border-radius: 50%;
+            overflow: hidden;
+            background-color: #ff6b00;
+            display: flex; align-items: center; justify-content: center;
+            color: white; font-size: 32px; font-weight: bold;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        .logo-img {
+            width: 100%; height: 100%; object-fit: cover;
+            position: absolute; top: 0; left: 0;
+            background-color: white;
+        }
+        .cabecera-catalogo h1 { font-size: 2.5rem; font-weight: 700; color: var(--color-texto); margin-bottom: 0.5rem; letter-spacing: -1px; }
+        .cabecera-catalogo p { font-size: 1.1rem; margin-bottom: 1.5rem; color: var(--color-texto-suave); font-weight: 300; }
+
+        .btn-whatsapp-header {
+            display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+            background-color: var(--color-whatsapp); color: white;
+            padding: 12px 28px; border-radius: 50px; text-decoration: none; font-weight: 600;
+            box-shadow: 0 8px 20px rgba(37, 211, 102, 0.3); transition: all 0.3s ease;
+            margin-bottom: 5px;
+        }
+        .btn-whatsapp-header:hover { transform: translateY(-3px); box-shadow: 0 12px 25px rgba(37, 211, 102, 0.4); }
+        .btn-whatsapp-header svg { width: 20px; height: 20px; fill: currentColor; }
+
+        /* Filtros */
+        .filtros { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; padding: 1rem 1rem 2rem; max-width: 1000px; margin: 0 auto; }
+        .btn-filtro { background: white; border: 1px solid #e0e0e0; color: var(--color-texto-suave); padding: 10px 24px; border-radius: 30px; font-family: 'Poppins', sans-serif; font-weight: 500; transition: all 0.3s; box-shadow: 0 4px 10px rgba(0,0,0,0.02); cursor: pointer; }
         .btn-filtro:hover { border-color: var(--color-principal); color: var(--color-principal); }
         .btn-filtro.activo { background: var(--color-principal); border-color: var(--color-principal); color: white; box-shadow: 0 6px 15px rgba(255, 118, 0, 0.2); }
 
-        /* Catálogo y Tarjetas Modernas */
-        .catalogo { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 2rem; padding: 2rem 1rem 4rem; max-width: 1200px; margin: 0 auto; }
-        .tarjeta { 
+        /* Catálogo y Tarjetas */
+        .catalogo { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 2rem; padding: 0 0 4rem; }
+        .tarjeta-producto { 
             background: var(--color-tarjeta); 
             border-radius: 24px; 
             overflow: hidden; 
@@ -61,32 +92,50 @@
             transition: all 0.4s ease;
             border: 1px solid rgba(0,0,0,0.01);
         }
-        .tarjeta:hover { transform: translateY(-10px); box-shadow: var(--sombra-fuerte); }
-        .tarjeta img { width: 100%; height: 260px; object-fit: cover; transition: transform 0.5s ease; }
-        .tarjeta:hover img { transform: scale(1.05); }
+        .tarjeta-producto:hover { transform: translateY(-10px); box-shadow: var(--sombra-fuerte); }
         
-        .imagen-contenedor { overflow: hidden; position: relative; }
-        .etiqueta-ejemplo { position: absolute; top: 15px; right: 15px; background: #2d3436; color: white; padding: 6px 14px; border-radius: 20px; font-size: 0.75rem; font-weight: 700; letter-spacing: 1px; z-index: 2; }
+        .producto-img {
+            width: 100%;
+            aspect-ratio: 4/3;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        .tarjeta-producto:hover .producto-img { transform: scale(1.05); }
+
+        .etiqueta {
+            position: absolute; top: 15px; left: 15px;
+            background-color: #ff3b3b; color: white;
+            padding: 6px 14px; border-radius: 20px;
+            font-size: 0.75rem; font-weight: 700; letter-spacing: 1px; z-index: 2;
+            box-shadow: 0 4px 10px rgba(255, 59, 59, 0.3);
+        }
+
+        .info-producto { padding: 1.5rem; display: flex; flex-direction: column; flex-grow: 1; background: white; position: relative; z-index: 2; }
+        .info-producto h3 { font-size: 1.4rem; margin-bottom: 0.5rem; color: var(--color-texto); font-weight: 700; }
+        .info-producto p { font-size: 0.95rem; color: var(--color-texto-suave); margin-bottom: 1.5rem; flex-grow: 1; line-height: 1.7; }
         
-        .info-tarjeta { padding: 2rem 1.5rem; display: flex; flex-direction: column; flex-grow: 1; background: white; position: relative; z-index: 2; }
-        .info-tarjeta h3 { font-size: 1.4rem; margin-bottom: 0.5rem; color: var(--color-texto); font-weight: 700; }
-        .info-tarjeta p { font-size: 0.95rem; color: var(--color-texto-suave); margin-bottom: 1.5rem; flex-grow: 1; line-height: 1.7; }
-        
-        .caja-precio { display: flex; align-items: center; justify-content: space-between; margin-top: auto; }
+        .caja-precio { display: flex; justify-content: space-between; align-items: center; margin-top: auto; }
         .precio { font-size: 1.6rem; font-weight: 700; color: var(--color-principal); }
         
-        .btn-whatsapp { background: #f4f7f6; color: var(--color-texto); width: 45px; height: 45px; display: flex; align-items: center; justify-content: center; border-radius: 12px; transition: all 0.3s ease; }
-        .btn-whatsapp svg { width: 24px; height: 24px; fill: var(--color-whatsapp); transition: all 0.3s ease; }
-        .tarjeta:hover .btn-whatsapp { background: var(--color-whatsapp); }
-        .tarjeta:hover .btn-whatsapp svg { fill: white; }
+        .btn-whatsapp {
+            min-height: 44px;
+            display: inline-flex; align-items: center; justify-content: center; gap: 6px;
+            background: #f4f7f6; color: var(--color-texto);
+            text-decoration: none; padding: 0 16px; border-radius: 12px; font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        .btn-whatsapp svg { width: 20px; height: 20px; fill: var(--color-whatsapp); transition: all 0.3s ease; }
+        .tarjeta-producto:hover .btn-whatsapp { background: var(--color-whatsapp); color: white; }
+        .tarjeta-producto:hover .btn-whatsapp svg { fill: white; }
 
-        /* Pie de página elegante */
-        footer { background: #111111; color: #ffffff; text-align: center; padding: 5rem 1rem; }
-        footer h2 { margin-bottom: 2.5rem; font-size: 2.5rem; }
-        .dato { display: flex; align-items: center; justify-content: center; gap: 12px; margin-bottom: 1.2rem; color: #a0a0a0; }
-        .icono { width: 24px; height: 24px; stroke: var(--color-principal); fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0; }
-        footer a { color: #ffffff; text-decoration: none; font-weight: 500; transition: color 0.3s; }
-        footer a:hover { color: var(--color-principal); }
+        /* Pie de página dinámico */
+        footer { text-align: center; padding: 40px 0 20px 0; }
+        .footer-titulo { font-family: 'Playfair Display', serif; font-size: 1.5rem; color: var(--color-texto); margin-bottom: 1.5rem; }
+        .footer-dato { display: flex; align-items: center; justify-content: center; gap: 10px; margin-bottom: 12px; color: var(--color-texto-suave); font-size: 14px; }
+        .footer-dato a { color: var(--color-texto-suave); text-decoration: none; transition: color 0.3s; }
+        .footer-dato a:hover { color: var(--color-principal); }
+        .footer-icono { width: 20px; height: 20px; stroke: var(--color-principal); fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+        .footer-demo { margin-top: 25px; font-size: 12px; color: #aaa; padding-top: 15px; border-top: 1px solid #eaeaea; display: inline-block; }
         
         /* Botón flotante */
         .flotante-wa { position: fixed; bottom: 25px; right: 25px; background: var(--color-whatsapp); width: 65px; height: 65px; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 10px 25px rgba(37,211,102,0.4); text-decoration: none; z-index: 1000; transition: transform 0.3s ease; }
@@ -96,60 +145,111 @@
 </head>
 <body>
 
-    <header>
-        <img src="fotos/logo.png" alt="Logo del negocio" class="logo" onerror="this.src='https://placehold.co/200x200/cccccc/ffffff?text=Logo'">
-        <h1>Top <span>Dopa</span></h1>
-        <p>Experiencia de sabores únicos directo a tu mesa</p>
-        <a href="https://wa.me/51999999999" class="btn btn-principal" target="_blank">Reservar o Pedir Ahora</a>
-    </header>
+    <div class="contenedor-principal">
+        
+        <header class="cabecera-catalogo">
+            <div class="logo-container">
+                <span id="logo-texto">TD</span>
+                <img src="fotos/logo.png" alt="Logo" id="logo-img" class="logo-img" onerror="this.style.display='none'">
+            </div>
+            <h1 id="header-nombre">Cargando...</h1>
+            <p id="header-frase"></p>
+            <a href="#" target="_blank" class="btn-whatsapp-header" id="wa-header">
+                <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+                Pedir por WhatsApp
+            </a>
+        </header>
 
-    <div class="filtros" id="contenedor-filtros"></div>
+        <div class="filtros" id="contenedor-filtros"></div>
 
-    <main class="catalogo" id="contenedor-productos"></main>
+        <main class="catalogo" id="contenedor-productos"></main>
 
-    <footer>
-        <h2>Visítanos</h2>
-        <p class="dato">
-            <svg class="icono" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-            Lunes a Sábado de 12:00 pm a 10:00 pm
-        </p>
-        <p class="dato">
-            <svg class="icono" viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
-            Tu calle y distrito, Lima
-        </p>
-        <p class="dato">
-            <svg class="icono" viewBox="0 0 24 24"><polygon points="3 6 9 3 15 6 21 3 21 18 15 21 9 18 3 21"/><line x1="9" y1="3" x2="9" y2="18"/><line x1="15" y1="6" x2="15" y2="21"/></svg>
-            <a href="Pendiente" target="_blank">Ver en Google Maps</a>
-        </p>
-        <p class="dato">
-            <svg class="icono" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
-            <a href="Pendiente" target="_blank">Facebook</a>
-            &nbsp;&nbsp;&nbsp;
-            <svg class="icono" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
-            <a href="Pendiente" target="_blank">Instagram</a>
-        </p>
-    </footer>
+        <footer id="pie-pagina"></footer>
 
-    <a href="https://wa.me/51999999999" class="flotante-wa" target="_blank" aria-label="Escribir por WhatsApp">
+    </div>
+
+    <!-- Botón flotante -->
+    <a href="#" class="flotante-wa" target="_blank" aria-label="Escribir por WhatsApp" id="wa-flotante">
         <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
     </a>
 
     <script>
-        const numeroWhatsApp = "51999999999"; 
-        const mensajeBase = "Hola, me gustaría pedir: ";
+        // CONFIGURACIÓN CENTRAL DEL NEGOCIO
+        const NEGOCIO = {
+            nombre: "Top Dopa",
+            frase: "Experiencia de sabores únicos",
+            whatsapp: "51927990393",
+            horario: "Lunes a Sábado de 12:00 pm a 10:00 pm",
+            direccion: "Tu calle y distrito, Lima",
+            mapsUrl: "https://maps.app.goo.gl/ejemplo", // Deja en "" para ocultar
+            facebook: "https://facebook.com/ejemplo",   // Deja en "" para ocultar
+            instagram: "https://instagram.com/ejemplo", // Deja en "" para ocultar
+            esDemo: true
+        };
 
         const productos = [
-            { categoria: "Promociones", nombre: "Combo Familiar", descripcion: "Descripción corta del plato o producto. Ideal para compartir.", precio: 45.00, imagen: "fotos/combo_familiar.jpg" },
-            { categoria: "Promociones", nombre: "Dúo Personal", descripcion: "Descripción corta del producto. Incluye bebida.", precio: 25.00, imagen: "fotos/duo_personal.jpg" },
-            { categoria: "Platos de Fondo", nombre: "Plato Especial 1", descripcion: "Ingredientes principales de este plato delicioso.", precio: 30.00, imagen: "fotos/plato_especial1.jpg" },
-            { categoria: "Platos de Fondo", nombre: "Plato Especial 2", descripcion: "Ingredientes principales de este plato delicioso.", precio: 28.00, imagen: "fotos/plato_especial2.jpg" },
-            { categoria: "Platos de Fondo", nombre: "Plato Especial 3", descripcion: "Ingredientes principales de este plato delicioso.", precio: 32.00, imagen: "fotos/plato_especial3.jpg" },
-            { categoria: "Platos de Fondo", nombre: "Plato Especial 4", descripcion: "Ingredientes principales de este plato delicioso.", precio: 35.00, imagen: "fotos/plato_especial4.jpg" },
-            { categoria: "Bebidas", nombre: "Chicha Morada 1L", descripcion: "Bebida natural helada.", precio: 12.00, imagen: "fotos/chicha_morada.jpg" },
-            { categoria: "Bebidas", nombre: "Limonada 1L", descripcion: "Bebida natural helada.", precio: 10.00, imagen: "fotos/limonada.jpg" },
-            { categoria: "Postres", nombre: "Postre del día", descripcion: "Un dulce perfecto para terminar.", precio: 8.00, imagen: "fotos/postre.jpg" }
+            { categoria: "Promociones", nombre: "Combo Familiar Burger (Ejemplo)", descripcion: "Hamburguesas clásicas + porción de papas fritas. Ideal para compartir.", precio: 45.00, imagen: "fotos/combo_familiar.jpg", etiqueta: "Más pedido" },
+            { categoria: "Promociones", nombre: "Dúo Pizza Personal (Ejemplo)", descripcion: "Deliciosas tajadas de pizza con complementos.", precio: 25.00, imagen: "fotos/duo_personal.jpg", etiqueta: "Promo" },
+            { categoria: "Platos de Fondo", nombre: "Ronda Marina (Ejemplo)", descripcion: "Mixtura de mariscos frescos y chicharrón de calamar.", precio: 30.00, imagen: "fotos/plato_especial1.jpg" },
+            { categoria: "Platos de Fondo", nombre: "Parrilla Mixta (Ejemplo)", descripcion: "Cortes de carne seleccionada con papas rústicas.", precio: 28.00, imagen: "fotos/plato_especial2.jpg" },
+            { categoria: "Platos de Fondo", nombre: "Causa Limeña (Ejemplo)", descripcion: "Causa tradicional rellena y coronada con cremas.", precio: 32.00, imagen: "fotos/plato_especial3.jpg" },
+            { categoria: "Platos de Fondo", nombre: "Seco a la Norteña (Ejemplo)", descripcion: "Guiso de carne servido en olla de barro.", precio: 35.00, imagen: "fotos/plato_especial4.jpg" },
+            { categoria: "Bebidas", nombre: "Jarra de Chicha Morada (Ejemplo)", descripcion: "Chicha natural helada con trozos de manzana (1L).", precio: 12.00, imagen: "fotos/chica_morada.jpg" },
+            { categoria: "Bebidas", nombre: "Limonada Frozen (Ejemplo)", descripcion: "Limonada refrescante con hierbabuena (1L).", precio: 10.00, imagen: "fotos/limonada.jpg" },
+            { categoria: "Postres", nombre: "Crema Volteada (Ejemplo)", descripcion: "Porción de crema volteada tradicional bañada en caramelo.", precio: 8.00, imagen: "fotos/postre.jpg" }
         ];
 
+        // 1. Inicializar Datos del Negocio
+        function inicializarNegocio() {
+            document.getElementById('header-nombre').textContent = NEGOCIO.nombre;
+            document.getElementById('header-frase').textContent = NEGOCIO.frase;
+            document.getElementById('logo-img').alt = NEGOCIO.nombre;
+            
+            // Genera iniciales (Ej: "Top Dopa" -> "TD")
+            const palabras = NEGOCIO.nombre.split(' ');
+            const iniciales = (palabras.length > 1 ? palabras[0][0] + palabras[1][0] : NEGOCIO.nombre.substring(0,2)).toUpperCase();
+            document.getElementById('logo-texto').textContent = iniciales;
+            
+            // Centralizar enlaces globales de WhatsApp
+            const linkWaBase = `https://wa.me/${NEGOCIO.whatsapp}`;
+            document.getElementById('wa-header').href = linkWaBase;
+            document.getElementById('wa-flotante').href = linkWaBase;
+        }
+
+        // 2. Construir Pie de Página dinámico
+        function renderizarFooter() {
+            const footer = document.getElementById('pie-pagina');
+            let html = `<h2 class="footer-titulo">Visítanos</h2>`;
+            
+            if (NEGOCIO.horario) {
+                html += `<div class="footer-dato"><svg class="footer-icono" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> ${NEGOCIO.horario}</div>`;
+            }
+            if (NEGOCIO.direccion) {
+                html += `<div class="footer-dato"><svg class="footer-icono" viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg> ${NEGOCIO.direccion}</div>`;
+            }
+            if (NEGOCIO.mapsUrl) {
+                html += `<div class="footer-dato"><svg class="footer-icono" viewBox="0 0 24 24"><polygon points="3 6 9 3 15 6 21 3 21 18 15 21 9 18 3 21"/><line x1="9" y1="3" x2="9" y2="18"/><line x1="15" y1="6" x2="15" y2="21"/></svg> <a href="${NEGOCIO.mapsUrl}" target="_blank">Ver en Google Maps</a></div>`;
+            }
+            
+            let redesHtml = '';
+            if (NEGOCIO.facebook) {
+                redesHtml += `<a href="${NEGOCIO.facebook}" target="_blank" style="display:flex; align-items:center;"><svg class="footer-icono" viewBox="0 0 24 24" style="margin-right:4px;"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>Facebook</a>`;
+            }
+            if (NEGOCIO.instagram) {
+                redesHtml += `<a href="${NEGOCIO.instagram}" target="_blank" style="display:flex; align-items:center;"><svg class="footer-icono" viewBox="0 0 24 24" style="margin-right:4px;"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>Instagram</a>`;
+            }
+            if (redesHtml) {
+                html += `<div class="footer-dato" style="gap:20px;">${redesHtml}</div>`;
+            }
+
+            if (NEGOCIO.esDemo) {
+                html += `<div class="footer-demo">Catálogo de ejemplo</div>`;
+            }
+
+            footer.innerHTML = html;
+        }
+
+        // 3. Renderizar Filtros con addEventListener seguro
         const contenedorProductos = document.getElementById('contenedor-productos');
         const contenedorFiltros = document.getElementById('contenedor-filtros');
         const categorias = ["Todos", ...new Set(productos.map(p => p.categoria))];
@@ -157,46 +257,56 @@
         function generarFiltros() {
             if (productos.length > 8) {
                 contenedorFiltros.innerHTML = categorias.map(cat => 
-                    `<button class="btn-filtro ${cat === 'Todos' ? 'activo' : ''}" onclick="filtrar('${cat}', this)">${cat}</button>`
+                    `<button class="btn-filtro ${cat === 'Todos' ? 'activo' : ''}" data-categoria="${cat}">${cat}</button>`
                 ).join('');
+
+                // Asignar eventos de clic
+                document.querySelectorAll('.btn-filtro').forEach(btn => {
+                    btn.addEventListener('click', (e) => {
+                        document.querySelectorAll('.btn-filtro').forEach(b => b.classList.remove('activo'));
+                        e.target.classList.add('activo');
+                        
+                        const cat = e.target.getAttribute('data-categoria');
+                        const filtrados = cat === "Todos" ? productos : productos.filter(p => p.categoria === cat);
+                        renderizarProductos(filtrados);
+                    });
+                });
             }
         }
 
+        // 4. Renderizar Productos
         function renderizarProductos(items) {
             contenedorProductos.innerHTML = items.map(prod => {
-                const textoCodificado = encodeURIComponent(mensajeBase + prod.nombre);
-                const linkWa = `https://wa.me/${numeroWhatsApp}?text=${textoCodificado}`;
-                const imagenFallback = "onerror=\"this.src='https://placehold.co/600x450/e0e0e0/ffffff?text=Falta+Foto'\"";
-
+                const insignia = prod.etiqueta ? `<div class="etiqueta">${prod.etiqueta}</div>` : '';
+                
+                // Texto pre-escrito conectado al objeto NEGOCIO
+                const textoWa = encodeURIComponent(`Hola ${NEGOCIO.nombre}, quisiera pedir: ${prod.nombre}`);
+                const linkWa = `https://wa.me/${NEGOCIO.whatsapp}?text=${textoWa}`;
+                
                 return `
-                <div class="tarjeta">
-                    <div class="imagen-contenedor">
-                        <span class="etiqueta-ejemplo">NUEVO</span>
-                        <img src="${prod.imagen}" alt="${prod.nombre}" ${imagenFallback}>
+                <div class="tarjeta-producto">
+                    <div style="position: relative; overflow: hidden;">
+                        ${insignia}
+                        <img src="${prod.imagen}" alt="${prod.nombre}" loading="lazy" class="producto-img" onerror="this.src='https://placehold.co/640x480/e0e0e0/ffffff?text=Falta+Foto'">
                     </div>
-                    <div class="info-tarjeta">
+                    <div class="info-producto">
                         <h3>${prod.nombre}</h3>
                         <p>${prod.descripcion}</p>
                         <div class="caja-precio">
                             <div class="precio">S/ ${prod.precio.toFixed(2)}</div>
-                            <a href="${linkWa}" target="_blank" class="btn-whatsapp" aria-label="Pedir por WhatsApp">
+                            <a href="${linkWa}" target="_blank" class="btn-whatsapp" aria-label="Pedir ${prod.nombre}">
                                 <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+                                Pedir
                             </a>
                         </div>
                     </div>
-                </div>
-                `;
+                </div>`;
             }).join('');
         }
 
-        function filtrar(categoria, boton) {
-            document.querySelectorAll('.btn-filtro').forEach(btn => btn.classList.remove('activo'));
-            if(boton) boton.classList.add('activo');
-
-            const filtrados = categoria === "Todos" ? productos : productos.filter(p => p.categoria === categoria);
-            renderizarProductos(filtrados);
-        }
-
+        // 5. Iniciar la aplicación
+        inicializarNegocio();
+        renderizarFooter();
         generarFiltros();
         renderizarProductos(productos);
     </script>
