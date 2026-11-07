@@ -3,14 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dopa | Catálogo Premium</title>
-    <meta name="description" content="Catálogo de nuestros productos. Haz tu pedido directamente por WhatsApp.">
+    <title>Top Dopa | Catálogo Premium</title>
+    <meta name="description" content="Puro ceviche, causa y sabor criollo">
     
-    <!-- Etiquetas SEO (Open Graph) para vista previa al compartir -->
+    <!-- Etiquetas SEO (Open Graph) Estáticas -->
     <meta property="og:title" content="Top Dopa | Catálogo Premium">
-    <meta property="og:description" content="Catálogo de nuestros productos. Haz tu pedido directamente por WhatsApp.">
+    <meta property="og:description" content="Puro ceviche, causa y sabor criollo">
     <meta property="og:image" content="https://topdopa-demo.pages.dev/fotos/portada1.jpg">
+    <meta property="og:url" content="https://topdopa-demo.pages.dev">
     <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
     <link rel="icon" href="fotos/logo.png">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -24,6 +26,7 @@
             --arena: #FFF7EC;
             --tinta: #12313A;
             --whatsapp-envio: #128C7E;
+            --color-texto-suave: #5B6B70;
             --sombra-suave: 0 12px 30px rgba(0, 0, 0, 0.04);
             --sombra-fuerte: 0 15px 40px rgba(11, 110, 117, 0.12);
             --borde-tarjeta: rgba(0,0,0,0.02);
@@ -47,7 +50,7 @@
         /* Portada Welcome Hero */
         .portada-hero {
             position: relative; width: 100%; min-height: 100vh; min-height: 100svh;
-            background: linear-gradient(to bottom, #064044, #021a1b); /* Fallback */
+            background: linear-gradient(to bottom, #064044, #021a1b);
             background-size: cover; background-position: center 40%;
             display: flex; flex-direction: column; justify-content: flex-end; align-items: center; padding: 2rem 1rem;
             border-radius: 0 0 32px 32px; box-shadow: 0 10px 25px rgba(0,0,0,0.2); overflow: hidden;
@@ -60,7 +63,6 @@
             position: relative; z-index: 2; width: 100%; max-width: 450px; text-align: center;
             background: rgba(255, 255, 255, 0.15); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
             border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 28px; padding: 3rem 2rem 2rem; margin-bottom: 2rem;
-            /* Fallback fondo sólido si no soporta blur */
         }
         @supports not (backdrop-filter: blur(12px)) { .portada-tarjeta { background: rgba(0, 0, 0, 0.6); } }
 
@@ -133,14 +135,14 @@
         .barra-carrito:hover { background: #0e858e; }
 
         /* Modales */
-        .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); z-index: 2000; display: none; justify-content: center; align-items: center; opacity: 0; transition: opacity 0.3s ease; padding: 16px; }
+        .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; height: 100dvh; background: rgba(0,0,0,0.6); z-index: 2000; display: none; justify-content: center; align-items: center; opacity: 0; transition: opacity 0.3s ease; padding: 16px; }
         .modal-overlay.activo { display: flex; opacity: 1; }
         .modal-cerrar { position: absolute; top: 12px; right: 12px; background: rgba(0,0,0,0.6); color: white; border: none; width: 32px; height: 32px; border-radius: 50%; font-size: 14px; cursor: pointer; display: flex; align-items: center; justify-content: center; z-index: 10; transition: background 0.3s; }
         .modal-cerrar:hover { background: black; }
         body.modal-abierto { overflow: hidden; }
 
         /* Modal Detalle Producto */
-        .modal-contenido { background: white; border-radius: 20px; width: 100%; max-width: 450px; max-height: 90vh; overflow-y: auto; position: relative; transform: translateY(20px); transition: transform 0.3s ease; box-shadow: 0 20px 40px rgba(0,0,0,0.2); }
+        .modal-contenido { background: white; border-radius: 20px; width: 100%; max-width: 450px; max-height: 90vh; max-height: 90dvh; overflow-y: auto; position: relative; transform: translateY(20px); transition: transform 0.3s ease; box-shadow: 0 20px 40px rgba(0,0,0,0.2); }
         .modal-overlay.activo .modal-contenido { transform: translateY(0); }
         .modal-img { width: 100%; height: 280px; object-fit: cover; display: block; }
         .modal-info { padding: 24px; }
@@ -157,8 +159,8 @@
         #modal-caja-boton .control-cantidad { width: 100%; justify-content: center; }
 
         /* Panel Carrito */
-        .panel-carrito { background: white; width: 100%; max-width: 450px; height: 100vh; position: absolute; right: 0; top: 0; border-radius: 0; display: flex; flex-direction: column; transform: translateX(100%); transition: transform 0.3s ease; box-shadow: -5px 0 25px rgba(0,0,0,0.1); }
-        @media (min-width: 600px) { .panel-carrito { height: 90vh; top: 5vh; right: auto; border-radius: 20px; } .modal-overlay.activo .panel-carrito { transform: translateY(0) !important; } .panel-carrito { transform: translateY(20px); } }
+        .panel-carrito { background: white; width: 100%; max-width: 450px; height: 100vh; height: 100dvh; position: absolute; right: 0; top: 0; border-radius: 0; display: flex; flex-direction: column; transform: translateX(100%); transition: transform 0.3s ease; box-shadow: -5px 0 25px rgba(0,0,0,0.1); }
+        @media (min-width: 600px) { .panel-carrito { height: 90vh; height: 90dvh; top: 5vh; right: auto; border-radius: 20px; } .modal-overlay.activo .panel-carrito { transform: translateY(0) !important; } .panel-carrito { transform: translateY(20px); } }
         .modal-overlay.activo .panel-carrito { transform: translateX(0); }
         .panel-header { padding: 20px; border-bottom: 1px solid #eaeaea; display: flex; justify-content: space-between; align-items: center; }
         .panel-header h3 { margin: 0; font-size: 1.4rem; color: var(--tinta); }
@@ -172,6 +174,7 @@
         .btn-eliminar:hover { opacity: 1; }
         .panel-footer { padding: 20px; border-top: 1px solid #eaeaea; background: #fafafa; }
         .resumen-total { display: flex; justify-content: space-between; font-size: 1.3rem; font-weight: 700; margin-bottom: 16px; color: var(--tinta); }
+        
         .btn-enviar-pedido { display: flex; align-items: center; justify-content: center; gap: 8px; width: 100%; background: var(--whatsapp-envio); color: white; padding: 16px; border-radius: 12px; border: none; font-weight: 700; font-size: 1.1rem; cursor: pointer; transition: all 0.3s; font-family: inherit; }
         .btn-enviar-pedido:hover { background: #0f776a; transform: translateY(-2px); box-shadow: 0 5px 15px rgba(18,140,126,0.3); }
 
@@ -182,23 +185,26 @@
         .footer-dato a { color: #555; text-decoration: none; transition: color 0.3s; font-weight: 500; }
         .footer-dato a:hover { color: var(--oceano); }
         .footer-icono { width: 20px; height: 20px; fill: var(--oceano); flex-shrink: 0; }
-        .footer-enlace-ayuda { margin-top: 10px; display: inline-block; font-weight: 600; color: var(--oceano); text-decoration: underline; padding: 10px; }
+        .footer-enlace-ayuda { margin-top: 10px; display: inline-block; font-weight: 600; color: var(--oceano); text-decoration: underline; padding: 10px; cursor: pointer;}
         .footer-enlace-ayuda:hover { color: var(--tinta); }
         .footer-demo { margin-top: 25px; font-size: 12px; color: #888; padding-top: 15px; border-top: 1px solid rgba(0,0,0,0.05); display: inline-block; }
+        
+        /* Avisos de Seguridad y Horario */
+        .aviso-cerrado { background-color: #ffefef; color: #cc0000; padding: 10px 14px; border-radius: 8px; font-size: 13px; font-weight: 500; margin-bottom: 12px; display: none; text-align: center; border: 1px solid #ffcccc; }
+        .aviso-seguridad { font-size: 11px; color: var(--color-texto-suave); text-align: center; margin-bottom: 12px; line-height: 1.4; padding: 0 10px; }
     </style>
 </head>
 <body>
 
     <header class="portada-hero" id="header-hero">
         <div class="portada-overlay"></div>
-        
         <div class="portada-tarjeta">
             <div class="logo-container">
                 <span id="logo-texto">TD</span>
                 <img src="fotos/logo.png" alt="Logo" id="logo-img" class="logo-img" onerror="this.style.display='none'">
             </div>
             <div class="bienvenido-texto">Bienvenido a</div>
-            <h1 id="header-nombre">Cargando...</h1>
+            <h1 id="header-nombre">Top Dopa</h1>
             <p id="header-frase"></p>
             <div id="estado-tienda-portada"></div>
             <a href="#seccion-catalogo" class="btn-ver-carta">Ver la carta</a>
@@ -252,11 +258,13 @@
             </div>
             <div id="lista-pedido" class="lista-pedido"></div>
             <div class="panel-footer">
-                <p id="nota-delivery" style="font-size: 13px; color: #666; margin-bottom: 12px;"></p>
+                <div id="aviso-cerrado-panel" class="aviso-cerrado">Ahora estamos cerrados. Puedes enviar tu pedido y lo atenderemos cuando abramos.</div>
+                <p id="nota-delivery" style="font-size: 13px; color: #666; margin-bottom: 12px; display:flex; align-items:center;"></p>
                 <div class="resumen-total">
                     <span>Total de platos:</span>
                     <span id="total-pedido">S/ 0.00</span>
                 </div>
+                <div id="aviso-seguridad-panel" class="aviso-seguridad"></div>
                 <button id="btn-enviar-pedido" class="btn-enviar-pedido">
                     <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
                     Enviar pedido por WhatsApp
@@ -279,9 +287,9 @@
                 0: null
             },
             direccion: "Tu calle y distrito, Lima",
-            mapsUrl: "https://maps.app.goo.gl/ejemplo", 
-            facebook: "https://facebook.com/ejemplo",   
-            instagram: "https://instagram.com/ejemplo", 
+            mapsUrl: "", 
+            facebook: "",   
+            instagram: "", 
             mediosPago: ["Yape", "Plin", "Efectivo", "Transferencias"],
             infoDelivery: "Delivery adicional desde S/ 5 según la zona.",
             ruc: "",
@@ -290,7 +298,12 @@
             imagenCompartir: "fotos/portada1.jpg",
             modoPedido: "carrito",
             deslizarCategorias: true,
-            esDemo: true
+            esDemo: true,
+            urlSitio: "https://topdopa-demo.pages.dev",
+            plantillaDatos: true,
+            titularPago: "Top Dopa",
+            avisoPago: "",
+            mostrarAvisoPago: true
         };
 
         const productos = [
@@ -307,27 +320,29 @@
 
         let carrito = {};
 
-        function verificarEstadoTienda() {
-            if (!NEGOCIO.horarioSemanal) return `<span style="font-size:14px; color:rgba(255,255,255,0.9); text-shadow: 0 1px 3px rgba(0,0,0,0.5);">${NEGOCIO.horarioTexto}</span>`;
+        const iconoMoto = `<svg viewBox="0 0 24 24" class="footer-icono" style="margin-right:6px;"><path d="M19,7c0-1.1-0.9-2-2-2h-3v2h3v2.65L13.52,14H10V9H6c-2.21,0-4,1.79-4,4v3h2c0,1.66,1.34,3,3,3s3-1.34,3-3h4.48L19,10.35V7z M7,17c-0.55,0-1-0.45-1-1h2C8,16.55,7.55,17,7,17z"/><path d="M5,6h5v2H5V6z"/><path d="M19,13c-1.66,0-3,1.34-3,3s1.34,3,3,3s3-1.34,3-3S20.66,13,19,13z M19,17c-0.55,0-1-0.45-1-1s0.45-1,1-1s1,0.45,1,1S19.55,17,19,17z"/></svg>`;
+
+        function estaAbierto() {
+            if (!NEGOCIO.horarioSemanal) return true;
             const fechaLima = new Date(new Date().toLocaleString("en-US", {timeZone: "America/Lima"}));
             const dia = fechaLima.getDay();
             const horaActual = fechaLima.getHours() * 60 + fechaLima.getMinutes();
             const horarioHoy = NEGOCIO.horarioSemanal[dia];
-            
             if (horarioHoy) {
                 const [hA, mA] = horarioHoy.apertura.split(':').map(Number);
                 const [hC, mC] = horarioHoy.cierre.split(':').map(Number);
-                if (horaActual >= (hA*60+mA) && horaActual <= (hC*60+mC)) return `<span style="background-color: var(--whatsapp-envio); color: white; padding: 4px 14px; border-radius: 20px; font-size: 13px; font-weight: bold; box-shadow: 0 4px 10px rgba(0,0,0,0.3);">Abierto ahora</span>`;
+                return (horaActual >= (hA*60+mA) && horaActual <= (hC*60+mC));
             }
+            return false;
+        }
+
+        function verificarEstadoTienda() {
+            if (!NEGOCIO.horarioSemanal) return `<span style="font-size:14px; color:rgba(255,255,255,0.9); text-shadow: 0 1px 3px rgba(0,0,0,0.5);">${NEGOCIO.horarioTexto}</span>`;
+            if (estaAbierto()) return `<span style="background-color: var(--whatsapp-envio); color: white; padding: 4px 14px; border-radius: 20px; font-size: 13px; font-weight: bold; box-shadow: 0 4px 10px rgba(0,0,0,0.3);">Abierto ahora</span>`;
             return `<span style="background-color: #ff3b3b; color: white; padding: 4px 14px; border-radius: 20px; font-size: 13px; font-weight: bold; box-shadow: 0 4px 10px rgba(0,0,0,0.3);">Cerrado ahora</span>`;
         }
 
         function inicializarNegocio() {
-            document.title = `${NEGOCIO.nombre} | Catálogo`;
-            const ogTitle = document.querySelector('meta[property="og:title"]'); if (ogTitle) ogTitle.setAttribute("content", `${NEGOCIO.nombre} | Catálogo`);
-            const ogDesc = document.querySelector('meta[property="og:description"]'); if (ogDesc) ogDesc.setAttribute("content", NEGOCIO.lema || NEGOCIO.frase);
-            const ogImage = document.querySelector('meta[property="og:image"]'); if (ogImage && NEGOCIO.imagenCompartir) ogImage.setAttribute("content", `https://topdopa-demo.pages.dev/${NEGOCIO.imagenCompartir}`);
-            
             document.getElementById('header-nombre').textContent = NEGOCIO.nombre;
             document.getElementById('header-frase').textContent = NEGOCIO.lema || NEGOCIO.frase;
             document.getElementById('logo-img').alt = NEGOCIO.nombre;
@@ -341,7 +356,21 @@
             const palabras = NEGOCIO.nombre.split(' ');
             document.getElementById('logo-texto').textContent = (palabras.length > 1 ? palabras[0][0] + palabras[1][0] : NEGOCIO.nombre.substring(0,2)).toUpperCase();
             
-            if(NEGOCIO.infoDelivery) document.getElementById('nota-delivery').textContent = `🛵 ${NEGOCIO.infoDelivery}`;
+            if(NEGOCIO.infoDelivery) {
+                document.getElementById('nota-delivery').innerHTML = iconoMoto + " " + NEGOCIO.infoDelivery;
+            }
+
+            let textoSeg = "";
+            if (NEGOCIO.mostrarAvisoPago) {
+                if (NEGOCIO.avisoPago) {
+                    textoSeg = NEGOCIO.avisoPago;
+                } else {
+                    textoSeg = `Paga solo después de confirmar tu pedido por el WhatsApp oficial de ${NEGOCIO.nombre}. ` + 
+                               (NEGOCIO.titularPago ? `Antes de pagar, revisa que el nombre del destinatario sea ${NEGOCIO.titularPago}. ` : "") +
+                               `No pedimos contraseñas ni códigos.`;
+                }
+            }
+            document.getElementById('aviso-seguridad-panel').textContent = textoSeg;
         }
 
         function renderizarFooter() {
@@ -349,23 +378,45 @@
             let html = `<h2 class="footer-titulo">Visítanos</h2>`;
             if (NEGOCIO.horarioTexto) html += `<div class="footer-dato"><svg class="footer-icono" viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg> ${NEGOCIO.horarioTexto}</div>`;
             if (NEGOCIO.direccion) html += `<div class="footer-dato"><svg class="footer-icono" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg> ${NEGOCIO.direccion}</div>`;
-            if (NEGOCIO.mapsUrl) html += `<div class="footer-dato" style="margin-bottom: 20px;"><svg class="footer-icono" viewBox="0 0 24 24"><polygon points="3 6 9 3 15 6 21 3 21 18 15 21 9 18 3 21"/><line x1="9" y1="3" x2="9" y2="18"/><line x1="15" y1="6" x2="15" y2="21"/></svg> <a href="${NEGOCIO.mapsUrl}" target="_blank">Ver en Google Maps</a></div>`;
+            if (NEGOCIO.mapsUrl) html += `<div class="footer-dato" style="margin-bottom: 20px;"><svg class="footer-icono" viewBox="0 0 24 24"><polygon points="3 6 9 3 15 6 21 3 21 18 15 21 9 18 3 21"/><line x1="9" y1="3" x2="9" y2="18"/><line x1="15" y1="6" x2="15" y2="21"/></svg> <a href="${NEGOCIO.mapsUrl}" target="_blank" rel="noopener noreferrer">Ver en Google Maps</a></div>`;
             
-            if (NEGOCIO.infoDelivery) html += `<div class="footer-dato" style="color: var(--tinta); font-weight: 500; margin-bottom: 5px;"><svg class="footer-icono" viewBox="0 0 24 24"><path d="M21 7.21l-3-2V4h-2v.21l-3-2L12 3l-1 .67v4.66l2 1.34v6.66l2 1.34V9.67l3 2 3-2V4.67l-2-1.34v3.88zM4 14v4h2v-4H4zm3-2v6h2v-6H7zm3-4v10h2V8h-2z"/></svg> ${NEGOCIO.infoDelivery}</div>`;
+            if (NEGOCIO.infoDelivery) html += `<div class="footer-dato" style="color: var(--tinta); font-weight: 500; margin-bottom: 5px;">${iconoMoto} ${NEGOCIO.infoDelivery}</div>`;
             if (NEGOCIO.mediosPago && NEGOCIO.mediosPago.length > 0) html += `<div class="footer-dato" style="margin-bottom: 20px;"><svg class="footer-icono" viewBox="0 0 24 24"><path d="M20 4H4c-1.11 0-1.99.89-1.99 2L2 18c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V6c0-1.11-.89-2-2-2zm0 14H4v-6h16v6zm0-10H4V6h16v2z"/></svg> Aceptamos: ${NEGOCIO.mediosPago.join(', ')}</div>`;
             
             let redesHtml = '';
-            if (NEGOCIO.facebook) redesHtml += `<a href="${NEGOCIO.facebook}" target="_blank" style="display:flex; align-items:center;"><svg class="footer-icono" viewBox="0 0 24 24" style="margin-right:4px;"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>Facebook</a>`;
-            if (NEGOCIO.instagram) redesHtml += `<a href="${NEGOCIO.instagram}" target="_blank" style="display:flex; align-items:center;"><svg class="footer-icono" viewBox="0 0 24 24" style="margin-right:4px;"><path d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2zm-.2 2A3.6 3.6 0 0 0 4 7.6v8.8C4 18.4 5.6 20 7.6 20h8.8a3.6 3.6 0 0 0 3.6-3.6V7.6C20 5.6 18.4 4 16.4 4H7.6zm9.65 1.5a1.25 1.25 0 0 1 0 2.5 1.25 1.25 0 0 1 0-2.5zM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6z"/></svg>Instagram</a>`;
+            if (NEGOCIO.facebook) redesHtml += `<a href="${NEGOCIO.facebook}" target="_blank" rel="noopener noreferrer" style="display:flex; align-items:center;"><svg class="footer-icono" viewBox="0 0 24 24" style="margin-right:4px;"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>Facebook</a>`;
+            if (NEGOCIO.instagram) redesHtml += `<a href="${NEGOCIO.instagram}" target="_blank" rel="noopener noreferrer" style="display:flex; align-items:center;"><svg class="footer-icono" viewBox="0 0 24 24" style="margin-right:4px;"><path d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2zm-.2 2A3.6 3.6 0 0 0 4 7.6v8.8C4 18.4 5.6 20 7.6 20h8.8a3.6 3.6 0 0 0 3.6-3.6V7.6C20 5.6 18.4 4 16.4 4H7.6zm9.65 1.5a1.25 1.25 0 0 1 0 2.5 1.25 1.25 0 0 1 0-2.5zM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6z"/></svg>Instagram</a>`;
             if (redesHtml) html += `<div class="footer-dato" style="gap:20px; margin-bottom: 20px;">${redesHtml}</div>`;
 
             if (NEGOCIO.ruc || NEGOCIO.razonSocial) html += `<div class="footer-dato" style="font-size: 12px; opacity: 0.7;">${NEGOCIO.razonSocial || ''} ${NEGOCIO.ruc ? 'RUC: '+NEGOCIO.ruc : ''}</div>`;
             
+            html += `<a href="#" id="btn-compartir" onclick="event.preventDefault(); compartirCarta();" class="footer-dato" style="font-weight:600; text-decoration:underline; display:inline-block; margin-bottom:15px; color:var(--tinta);">Compartir esta carta</a><br>`;
+
+            let textoSeg = "";
+            if (NEGOCIO.mostrarAvisoPago) {
+                textoSeg = NEGOCIO.avisoPago ? NEGOCIO.avisoPago : `Paga solo después de confirmar tu pedido por el WhatsApp oficial de ${NEGOCIO.nombre}. ` + (NEGOCIO.titularPago ? `Antes de pagar, revisa que el nombre del destinatario sea ${NEGOCIO.titularPago}. ` : "") + `No pedimos contraseñas ni códigos.`;
+                html += `<div class="aviso-seguridad" style="margin-top:20px;">${textoSeg}</div>`;
+            }
+
             const textoAyuda = encodeURIComponent(`Hola ${NEGOCIO.nombre}, necesito ayuda con mi pedido.`);
-            html += `<a href="https://wa.me/${NEGOCIO.whatsapp}?text=${textoAyuda}" target="_blank" class="footer-enlace-ayuda">¿Necesitas ayuda? Atención al cliente</a>`;
+            html += `<a href="https://wa.me/${NEGOCIO.whatsapp}?text=${textoAyuda}" target="_blank" rel="noopener noreferrer" class="footer-enlace-ayuda">¿Necesitas ayuda? Atención al cliente</a>`;
             if (NEGOCIO.esDemo) html += `<br><div class="footer-demo">Catálogo de ejemplo</div>`;
             footer.innerHTML = html;
         }
+
+        window.compartirCarta = async function() {
+            const btn = document.getElementById('btn-compartir');
+            const txtOriginal = btn.textContent;
+            if (navigator.share) {
+                try { await navigator.share({ title: NEGOCIO.nombre, text: NEGOCIO.lema, url: NEGOCIO.urlSitio }); } catch (err) {}
+            } else {
+                try {
+                    await navigator.clipboard.writeText(NEGOCIO.urlSitio);
+                    btn.textContent = "¡Enlace copiado!";
+                    setTimeout(() => btn.textContent = txtOriginal, 2000);
+                } catch(e) {}
+            }
+        };
 
         const contenedorProductos = document.getElementById('contenedor-productos');
         const categoriasArray = ["Todos", ...new Set(productos.map(p => p.categoria))];
@@ -402,8 +453,9 @@
         function generarBotonAccion(id) {
             const prod = productos.find(p => p.id === id);
             if (NEGOCIO.modoPedido !== "carrito") {
-                const msgWa = encodeURIComponent(`Hola ${NEGOCIO.nombre}, quiero hacer un pedido:\n- 1 x ${prod.nombre} — S/ ${prod.precio.toFixed(2)}`);
-                return `<a href="https://wa.me/${NEGOCIO.whatsapp}?text=${msgWa}" target="_blank" class="btn-whatsapp" aria-label="Pedir ${prod.nombre}"><svg viewBox="0 0 24 24"><path d="M19 6h-2c0-2.76-2.24-5-5-5S7 3.24 7 6H5c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-7-3c1.66 0 3 1.34 3 3H9c0-1.66 1.34-3 3-3zm7 17H5V8h14v12zm-7-8c-1.66 0-3-1.34-3-3H7c0 2.76 2.24 5 5 5s5-2.24 5-5h-2c0 1.66-1.34 3-3 3z"/></svg> Pedir</a>`;
+                const extrasDatos = NEGOCIO.plantillaDatos ? `\nNombre:\n¿Recojo o delivery?` : "";
+                const msgWaCat = `*NUEVO PEDIDO — ${NEGOCIO.nombre}*\n────────────\n- 1 x ${prod.nombre} — S/ ${prod.precio.toFixed(2)}\n────────────\n*Total de platos: S/ ${prod.precio.toFixed(2)}*\n(El delivery se coordina por este chat)\n${extrasDatos}`;
+                return `<a href="https://wa.me/${NEGOCIO.whatsapp}?text=${encodeURIComponent(msgWaCat)}" target="_blank" rel="noopener noreferrer" class="btn-whatsapp" aria-label="Pedir ${prod.nombre}"><svg viewBox="0 0 24 24"><path d="M19 6h-2c0-2.76-2.24-5-5-5S7 3.24 7 6H5c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-7-3c1.66 0 3 1.34 3 3H9c0-1.66 1.34-3 3-3zm7 17H5V8h14v12zm-7-8c-1.66 0-3-1.34-3-3H7c0 2.76 2.24 5 5 5s5-2.24 5-5h-2c0 1.66-1.34 3-3 3z"/></svg> Pedir</a>`;
             } else {
                 const qty = carrito[id] || 0;
                 if (qty === 0) {
@@ -459,6 +511,9 @@
             }
 
             if (document.getElementById('panel-carrito-modal').classList.contains('activo')) renderizarListaCarrito();
+            
+            const avisoCerradoPanel = document.getElementById('aviso-cerrado-panel');
+            if (avisoCerradoPanel) avisoCerradoPanel.style.display = estaAbierto() ? 'none' : 'block';
         }
 
         function renderizarListaCarrito() {
@@ -490,13 +545,15 @@
         });
 
         document.getElementById('btn-enviar-pedido').addEventListener('click', () => {
-            let msg = `Hola ${NEGOCIO.nombre}, quiero hacer un pedido:\n`;
+            let msg = `*NUEVO PEDIDO — ${NEGOCIO.nombre}*\n────────────\n`;
             let total = 0;
             for(let id in carrito) {
                 const q = carrito[id], p = productos.find(x => x.id === parseInt(id));
                 if(p) { const sub = q * p.precio; msg += `- ${q} x ${p.nombre} — S/ ${sub.toFixed(2)}\n`; total += sub; }
             }
-            msg += `Total de platos: S/ ${total.toFixed(2)}\nQuedo atento para coordinar entrega y pago.`;
+            msg += `────────────\n*Total de platos: S/ ${total.toFixed(2)}*\n(El delivery se coordina por este chat)\n`;
+            if (NEGOCIO.plantillaDatos) msg += `\nNombre:\n¿Recojo o delivery?`;
+            
             if(msg.length > 4000) { alert("Tu pedido es muy largo. Por favor divídelo en dos."); return; }
             window.open(`https://wa.me/${NEGOCIO.whatsapp}?text=${encodeURIComponent(msg)}`, '_blank');
         });
@@ -564,8 +621,8 @@
             const diffY = Math.abs(touchStartY - touchEndY);
             
             if (Math.abs(diffX) > 60 && Math.abs(diffX) > diffY * 1.5) {
-                if (diffX > 0) cambiarCategoriaActiva(categoriaActualIdx + 1); // Izquierda = siguiente
-                else cambiarCategoriaActiva(categoriaActualIdx - 1); // Derecha = anterior
+                if (diffX > 0) cambiarCategoriaActiva(categoriaActualIdx + 1);
+                else cambiarCategoriaActiva(categoriaActualIdx - 1);
             }
         }, {passive: true});
 
