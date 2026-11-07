@@ -135,7 +135,7 @@
         .barra-carrito:hover { background: #0e858e; }
 
         /* Modales */
-        .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; height: 100dvh; background: rgba(0,0,0,0.6); z-index: 2000; display: none; justify-content: center; align-items: center; opacity: 0; transition: opacity 0.3s ease; padding: 16px; }
+        .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100vh; height: 100dvh; background: rgba(0,0,0,0.6); z-index: 2000; display: none; justify-content: center; align-items: center; opacity: 0; transition: opacity 0.3s ease; padding: 16px; }
         .modal-overlay.activo { display: flex; opacity: 1; }
         .modal-cerrar { position: absolute; top: 12px; right: 12px; background: rgba(0,0,0,0.6); color: white; border: none; width: 32px; height: 32px; border-radius: 50%; font-size: 14px; cursor: pointer; display: flex; align-items: center; justify-content: center; z-index: 10; transition: background 0.3s; }
         .modal-cerrar:hover { background: black; }
@@ -164,7 +164,8 @@
         .modal-overlay.activo .panel-carrito { transform: translateX(0); }
         .panel-header { padding: 20px; border-bottom: 1px solid #eaeaea; display: flex; justify-content: space-between; align-items: center; }
         .panel-header h3 { margin: 0; font-size: 1.4rem; color: var(--tinta); }
-        .btn-vaciar { background: none; border: none; color: #ff3b3b; font-size: 0.9rem; font-weight: 500; cursor: pointer; text-decoration: underline; margin-right: 40px; padding: 5px; }
+        .btn-vaciar { background: none; border: none; color: #ff3b3b; font-size: 0.9rem; font-weight: 500; cursor: pointer; text-decoration: underline; margin-right: 40px; padding: 5px; transition: opacity 0.3s; }
+        .btn-vaciar:hover { opacity: 0.7; }
         .lista-pedido { flex-grow: 1; overflow-y: auto; padding: 20px; }
         .item-carrito { display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; padding-bottom: 16px; border-bottom: 1px dashed #eaeaea; }
         .item-info { flex-grow: 1; padding-right: 15px; }
@@ -539,9 +540,23 @@
             if (!btn) return;
             e.stopPropagation();
             const id = parseInt(btn.getAttribute('data-id'));
-            if (btn.classList.contains('btn-agregar') || btn.getAttribute('data-act') === 'plus') { cambiarCantidad(id, 1); } 
-            else if (btn.getAttribute('data-act') === 'minus') { cambiarCantidad(id, -1); } 
-            else if (btn.getAttribute('data-act') === 'trash') { cambiarCantidad(id, -carrito[id]); }
+            
+            if (btn.classList.contains('btn-agregar') || btn.getAttribute('data-act') === 'plus') { 
+                cambiarCantidad(id, 1); 
+            } else if (btn.getAttribute('data-act') === 'minus') { 
+                cambiarCantidad(id, -1); 
+            } else if (btn.getAttribute('data-act') === 'trash') { 
+                // Feedback visual: animar la tarjeta antes de borrar
+                const item = btn.closest('.item-carrito');
+                if (item) {
+                    item.style.transform = 'scale(0.95)';
+                    item.style.opacity = '0';
+                    item.style.transition = 'all 0.2s ease';
+                    setTimeout(() => cambiarCantidad(id, -carrito[id]), 200);
+                } else {
+                    cambiarCantidad(id, -carrito[id]);
+                }
+            }
         });
 
         document.getElementById('btn-enviar-pedido').addEventListener('click', () => {
@@ -555,11 +570,21 @@
             if (NEGOCIO.plantillaDatos) msg += `\nNombre:\n¿Recojo o delivery?`;
             
             if(msg.length > 4000) { alert("Tu pedido es muy largo. Por favor divídelo en dos."); return; }
-            window.open(`https://wa.me/${NEGOCIO.whatsapp}?text=${encodeURIComponent(msg)}`, '_blank');
+            window.open(`https://wa.me/${NEGOCIO.whatsapp}?text=${encodeURIComponent(msg)}`, '_blank', 'noopener,noreferrer');
         });
 
+        // Mejora UX: Vaciado inmediato sin alertas intrusivas
         document.getElementById('btn-vaciar-carrito').addEventListener('click', () => {
-            if(confirm("¿Estás seguro de vaciar el pedido?")) { carrito = {}; actualizarUI(); }
+            const lista = document.getElementById('lista-pedido');
+            lista.style.opacity = '0';
+            lista.style.transition = 'opacity 0.3s ease';
+            
+            setTimeout(() => {
+                carrito = {}; 
+                actualizarUI();
+                cerrarModalGeneral(modalCarrito);
+                lista.style.opacity = '1';
+            }, 300);
         });
 
         // --- MANEJO DE MODALES ---
